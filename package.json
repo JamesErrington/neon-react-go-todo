@@ -1,0 +1,25 @@
+{
+  "name": "neon-arbor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check": "npx @biomejs/biome check --apply src",
+    "clean": "rimraf build",
+    "build": "node src/esbuild.config.mjs"
+  },
+  "author": "James Errington <james.errington@protonmail.com>",
+  "dependencies": {
+    "@types/react": "^18.2.70",
+    "@types/react-dom": "^18.2.22",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.6.2",
+    "esbuild": "0.20.2",
+    "esbuild-plugin-copy": "^2.1.1",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.4.3"
+  }
+}
