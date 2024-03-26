@@ -9,10 +9,11 @@ export const NewTodoBox: FC = () => {
 			fetch("http://localhost:8080/todos", {
 				method: "POST",
 				body: JSON.stringify({ task: value }),
-                headers: { 'Content-Type': 'application/json' }
+				headers: { "Content-Type": "application/json" },
 			}),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["todos"] });
+			setText("");
 		},
 	});
 

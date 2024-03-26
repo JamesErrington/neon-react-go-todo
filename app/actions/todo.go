@@ -40,3 +40,15 @@ func GetAllTodos() ([]models.Todo, error) {
 
 	return todos, nil
 }
+
+func UpdateTodo(id int, task string, completed bool) error {
+	db := storage.GetDB()
+	query := "UPDATE todos SET updated_at = current_timestamp, task = $1, completed = $2 WHERE id = $3"
+
+	err := db.QueryRow(query, task, completed, id).Err()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

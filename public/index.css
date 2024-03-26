@@ -1,0 +1,11 @@
+.todo-container {
+    display: flex;
+}
+
+.todo-container > input {
+    margin-right: 10px;
+}
+
+.todo-container.completed {
+    text-decoration: line-through;
+}

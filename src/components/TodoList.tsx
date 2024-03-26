@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
+import { Todo } from "./Todo";
 
 function useTodos() {
-	return useQuery({
+	return useQuery<Todo[]>({
 		queryKey: ["todos"],
 		queryFn: () =>
 			fetch("http://localhost:8080/todos").then((res) => res.json()),
@@ -18,9 +19,7 @@ export const TodoList: FC = () => {
 	return (
 		<div>
 			{data.map((todo) => (
-				<div key={todo.id}>
-					<h4>{todo.task}</h4>
-				</div>
+				<Todo key={todo.id} todo={todo} />
 			))}
 		</div>
 	);
