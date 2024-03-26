@@ -6,10 +6,12 @@
   "scripts": {
     "check": "npx @biomejs/biome check --apply src",
     "clean": "rimraf build",
-    "build": "node src/esbuild.config.mjs"
+    "build": "node src/esbuild.config.mjs",
+    "watch": "node src/esbuild.config.mjs --watch"
   },
   "author": "James Errington <james.errington@protonmail.com>",
   "dependencies": {
+    "@tanstack/react-query": "^5.28.8",
     "@types/react": "^18.2.70",
     "@types/react-dom": "^18.2.22",
     "react": "^18.2.0",

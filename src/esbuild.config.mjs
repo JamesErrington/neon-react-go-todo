@@ -1,10 +1,11 @@
-import { build } from "esbuild"
-import { copy } from "esbuild-plugin-copy"
+import esbuild from "esbuild";
+import { copy } from "esbuild-plugin-copy";
 
-const BUILD_DIR = "build"
+const BUILD_DIR = "build";
 const isProduction = process.env.NODE_ENV === "production";
+const watch = process.argv.includes("--watch");
 
-build({
+const config = {
 	entryPoints: ["src/index.tsx"],
 	bundle: true,
 	format: "esm",
@@ -15,11 +16,18 @@ build({
 	color: true,
 	plugins: [
 		copy({
-			resolveFrom: 'cwd',
+			resolveFrom: "cwd",
 			assets: {
-				from: ['./public/*'],
+				from: ["./public/*"],
 				to: [`./${BUILD_DIR}`],
 			},
 		}),
 	],
-});
+};
+
+if (watch) {
+	const ctx = await esbuild.context(config);
+	await ctx.watch();
+} else {
+	esbuild.build(config);
+}
